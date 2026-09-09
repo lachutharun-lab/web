@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EVERGLOW CHEATS | Secure Payment</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000000;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000000;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .brand span {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #dcdf33;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #dcdf33;
+      text-decoration: underline;
+    }
+
+    h2.section-title {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      font-size: 2rem;
+      color: white;
+    }
+
+    h2.section-title strong.green {
+      color: #dcdf33;
+    }
+
+    .packages-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .package-card {
+      background-color: #111111;
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 260px;
+      position: relative;
+      box-shadow: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: white;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 15px #dcdf33;
+    }
+
+    .package-card.glow {
+      box-shadow: 0 0 20px #dcdf33, 0 0 40px #dcdf33, 0 0 60px #dcdf33;
+      border: 2px solid #dcdf33;
+    }
+
+    .package-card h3 {
+      margin-top: 0;
+      color: #dcdf33;
+    }
+
+    .package-card h2 {
+      color: white;
+      font-weight: 700;
+    }
+
+    .package-card del {
+      color: #66bb66;
+      font-size: 0.9rem;
+      margin-left: 6px;
+      font-weight: 500;
+    }
+
+    .package-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+      color: #cccccc;
+      font-size: 0.9rem;
+    }
+
+    .package-card ul li {
+      margin-bottom: 8px;
+    }
+
+    .package-card ul li::before {
+      content: "✔";
+      color: #dcdf33;
+      margin-right: 6px;
+      font-weight: bold;
+    }
+
+    .purchase-btn {
+      background-color: #dcdf33;
+      border: none;
+      padding: 10px 20px;
+      color: black;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .purchase-btn:hover {
+      background-color: #00ffaa;
+      box-shadow: 0 0 15px #dcdf33;
+      color: black;
+    }
+
+    .most-popular {
+      position: absolute;
+      top: -12px;
+      left: 12px;
+      background: linear-gradient(90deg, #dcdf33, #00ddff, #dcdf33);
+      background-size: 200% auto;
+      color: black;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: bold;
+      animation: shine 2s linear infinite;
+      box-shadow: 0 0 10px rgba(0,255,85,0.7);
+      user-select: none;
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .view-all-btn {
+      display: inline-block;
+      background-color: #dcdf33;
+      color: black;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      box-shadow: 0 0 15px #dcdf33;
+      transition: background-color 0.3s ease;
+      margin: 2rem auto;
+      cursor: pointer;
+    }
+    .view-all-btn:hover {
+      background-color: #00ffaa;
+    }
+
+    /* Payment Modal Styles */
+    .payment-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .payment-container {
+      background-color: #111111;
+      margin: 5% auto;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #dcdf33;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .payment-title {
+      color: #dcdf33;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .package-info {
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .payment-option:hover {
+      border-color: #dcdf33;
+    }
+
+    .payment-option.selected {
+      border-color: #dcdf33;
+      background-color: rgba(0, 255, 85, 0.1);
+    }
+
+    .payment-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: black;
+    }
+
+    .upi-icon {
+      background-color: #0047AB;
+    }
+
+    .crypto-icon {
+      background-color: #FF6B35;
+    }
+
+    .qr-icon {
+      background-color: #4ECDC4;
+    }
+
+    .payment-details {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+    }
+
+    .payment-details.active {
+      display: block;
+    }
+
+    .qr-code {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .qr-code img {
+      width: 200px;
+      height: 200px;
+      border: 2px solid #dcdf33;
+      border-radius: 8px;
+    }
+
+    .upi-id {
+      background-color: #222;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-family: monospace;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      border: 1px solid #dcdf33;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .upi-id:hover {
+      background-color: #333;
+      box-shadow: 0 0 10px #dcdf33;
+    }
+
+    .contact-info {
+      background-color: rgba(0, 255, 85, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .contact-info h4 {
+      color: #dcdf33;
+      margin-top: 0;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: #222;
+      border-radius: 6px;
+    }
+
+    .contact-link {
+      color: #dcdf33;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: rgba(0, 255, 85, 0.1);
+    }
+
+    .contact-link:hover {
+      background: rgba(0, 255, 85, 0.2);
+      box-shadow: 0 0 10px #dcdf33;
+      transform: scale(1.05);
+    }
+
+    .whatsapp-link {
+      background: rgba(37, 211, 102, 0.1);
+      color: #25D366;
+    }
+
+    .whatsapp-link:hover {
+      background: rgba(37, 211, 102, 0.2);
+      box-shadow: 0 0 10px #25D366;
+    }
+
+    .discord-link {
+      background: rgba(88, 101, 242, 0.1);
+      color: #5865F2;
+    }
+
+    .discord-link:hover {
+      background: rgba(88, 101, 242, 0.2);
+      box-shadow: 0 0 10px #5865F2;
+    }
+
+    .proceed-btn {
+      background-color: #dcdf33;
+      border: none;
+      padding: 12px;
+      color: black;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .proceed-btn:hover {
+      background-color: #00ffaa;
+      box-shadow: 0 0 15px #dcdf33;
+    }
+
+    .proceed-btn:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .processing-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .processing-icon {
+      font-size: 3rem;
+      color: #dcdf33;
+      margin-bottom: 1rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .packages-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .payment-container {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="brand">
+      <img src="logo/logo.gif" alt="EVERGLOW Logo" />
+      <span>EVERGLOW CHEATS</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="viewallpakcages.html">Packages</a>
+    </div>
+  </nav>
+
+  <h2 class="section-title">OUR <strong class="green">PRODUCTS</strong></h2>
+
+  <div class="packages-container">
+
+    <!-- INTERNAL V2 -->
+    <div class="package-card">
+      <h3>INTERNAL BASIC</h3>
+      <h2>₹1,499 <del>₹2,999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>Aimbot-Head</li>
+        <li>Sniper Scope</li>
+        <li>Sniper Quick Switch</li>
+        <li>Chams Menu</li>
+        <li>Stream Mode</li>
+        <li>Lightweight Execution</li>
+        <li>Support 32Bit & 64Bit</li>
+      </ul>
+      <button class="purchase-btn" data-package="INTERNAL BASIC" data-price="1499">Purchase</button>
+    </div>
+
+    <!-- BRUTAL MAX -->
+    <div class="package-card">
+      <h3>BRUTAL MAX</h3>
+      <h2>₹2499 <del>₹4499</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>Perfect accuracy guarantee</li>
+        <li>Headshot optimization</li>
+        <li>Recoil compensation</li>
+        <li>Bullet trajectory assist</li>
+        <li>Customizable aim settings</li>
+        <li>Multiple weapon support</li>
+        <li>Training mode included</li>
+        <li>Professional-grade precision</li>
+      </ul>
+      <button class="purchase-btn" data-package="BRUTAL MAX" data-price="2499">Purchase</button>
+    </div>
+
+     <!-- Aim Kill -->
+    <div class="package-card">
+      <h3>INTERNAL MAX</h3>
+      <h2>₹3499 <del>₹5499</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>Perfect accuracy guarantee</li>
+        <li>Headshot optimization</li>
+        <li>Recoil compensation</li>
+        <li>Bullet trajectory assist</li>
+        <li>Customizable aim settings</li>
+        <li>Multiple weapon support</li>
+        <li>Training mode included</li>
+        <li>Professional-grade precision</li>
+      </ul>
+      <button class="purchase-btn" data-package="INTERNAL MAX" data-price="3499">Purchase</button>
+    </div>
+
+    <!-- External Panel with glowing effect -->
+    <div class="package-card glow">
+      <h3>INTERNAL V2</h3>
+      <h2>₹1,999 <del>₹3,500</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>All Internal Preview features</li>
+        <li>Remote activation/deactivation</li>
+        <li>External-based configuration</li>
+        <li>Stealth mode activation</li>
+        <li>Priority customer support</li>
+        <li>Advanced customization</li>
+        <li>Multi-device compatibility</li>
+      </ul>
+      <button class="purchase-btn" data-package="INTERNAL V2" data-price="1999">Purchase</button>
+    </div>
+
+    <!-- Paid Sensi -->
+    <div class="package-card">
+      <h3>INTERNAL</h3>
+      <h2>₹2499 <del>₹4399</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>Professional sensitivity settings</li>
+        <li>Pre-configured for pro players</li>
+        <li>Instant improvement</li>
+        <li>Easy one-click setup</li>
+        <li>Compatible with all devices</li>
+        <li>Regular updates</li>
+        <li>Performance optimization</li>
+        <li>Setup tutorial included</li>
+      </ul>
+      <button class="purchase-btn" data-package="INTERNAL" data-price="₹4399">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>Silent Aim MAX</h3>
+      <h2>₹2999 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim MAX" data-price="2999">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>STREAMER INTERNAL</h3>
+      <h2>₹3799 <del>₹5999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="STREAMER INTERNAL" data-price="3799">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>SILENT AIM V2</h3>
+      <h2>₹2499 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>SILENT KILL</h3>
+      <h2>₹3499 <del>₹5999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Aim kill-ultra" data-price="3499">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>SILENT AIM LITE</h3>
+      <h2>₹2999 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>COVER SILENT</h3>
+      <h2>₹2999 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+    <!-- Paid Push -->
+    <div class="package-card">
+      <h3>AIMBOT VISIBLE</h3>
+      <h2>₹2999 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+     <!-- Paid Push -->
+    <div class="package-card">
+      <h3>AIMKILL EXE</h3>
+      <h2>₹2999 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+     <!-- Paid Push -->
+    <div class="package-card">
+      <h3>AIM KILL PVT</h3>
+      <h2>₹2999 <del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+         <!-- Paid Push -->
+    <div class="package-card">
+      <h3>AIM KILL PVT EXE</h3>
+      <h2>₹299 <del>₹499</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+          <!-- Paid Push -->
+    <div class="package-card">
+      <h3>AIMKILL</h3>
+      <h2>₹1499<del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div> 
+
+           <!-- Paid Push -->
+    <div class="package-card">
+      <h3>EXTERNAL</h3>
+      <h2>₹1499<del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div>
+
+               <!-- Paid Push -->
+    <div class="package-card">
+      <h3>UID BYPASS</h3>
+      <h2>₹1499<del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button> 
+    </div>
+
+               <!-- Paid Push -->
+    <div class="package-card">
+      <h3>LIB BYPASS</h3>
+      <h2>₹1499<del>₹4999</del></h2>
+      <ul>
+        <li>AVAILABLE FOR DAYS ALSO CONTACT US TO BUY</li>
+        <li>1 star = 4rs</li>
+        <li>Push rank optimization</li>
+        <li>Advanced movement assist</li>
+        <li>Tactical advantage tools</li>
+        <li>Rank boosting features</li>
+        <li>Performance analytics</li>
+        <li>Strategy recommendations</li>
+        <li>Competitive edge tools</li>
+      </ul>
+      <button class="purchase-btn" data-package="Silent Aim" data-price="2999">Purchase</button>
+    </div> 
+    
+  </div>
+  <!-- View All Packages Button -->
+  <div style="text-align: center;">
+    <a href="viewallpakcages.html" class="view-all-btn">WEB DEV BY EVERGLOW#CHAN</a>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="payment-modal" id="paymentModal">
+    <div class="payment-container">
+      <button class="close-btn" id="closeModal">&times;</button>
+      
+      <div id="paymentForm">
+        <h2 class="payment-title">Complete Your Purchase</h2>
+        
+        <div class="package-info" id="selectedPackageInfo">
+          <!-- Package info will be inserted here -->
+        </div>
+        
+        <div class="contact-info">
+          <h4>📞 Need Help?</h4>
+          <div class="contact-details">
+            <a href="https://wa.me/917550139169" class="contact-link whatsapp-link" target="_blank">
+              💬 WhatsApp: +91 75501 39169
+            </a>
+            <a href="https://discord.gg/xQKTxS98cc" class="contact-link discord-link" target="_blank">
+              🎮 Discord: EVERGLOW#CHAN
+            </a>
+          </div>
+        </div>
+        
+        <div class="payment-methods">
+          <div class="payment-option" data-method="upi">
+            <div class="payment-icon upi-icon">UPI</div>
+            <div>
+              <h3>UPI Payment</h3>
+              <p>Pay using GPay, PhonePe, Paytm or any UPI app</p>
+            </div>
+          </div>
+          
+          <div class="payment-option" data-method="crypto">
+            <div class="payment-icon crypto-icon">₿</div>
+            <div>
+              <h3>Crypto Payment</h3>
+              <p>Bitcoin, Ethereum, USDT and other cryptocurrencies</p>
+            </div>
+          </div>
+          
+          <div class="payment-option" data-method="qr">
+            <div class="payment-icon qr-icon">QR</div>
+            <div>
+              <h3>QR Code</h3>
+              <p>Scan and pay with any UPI app</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- UPI Payment Details -->
+        <div class="payment-details" id="upiDetails">
+          <h3>UPI Payment Instructions</h3>
+          <p>Send payment to the following UPI ID using any UPI app:</p>
+          <div class="upi-id" onclick="copyUPI()" title="Click to copy UPI ID">
+            EVERGLOW.gaming@okhdfcbank
+          </div>
+          <p>After payment, enter your transaction ID below:</p>
+          <div class="form-group">
+            <input type="text" id="transactionId" placeholder="Transaction ID (e.g. TXN123456789)">
+          </div>
+          <p><strong>Important:</strong> Keep the transaction screenshot for verification.</p>
+        </div>
+        
+        <!-- Crypto Payment Details -->
+        <div class="payment-details" id="cryptoDetails">
+          <h3>Crypto Payment</h3>
+          <p>Contact us for wallet addresses and payment instructions:</p>
+          <div class="contact-info">
+            <h4>📱 Contact for Crypto Payment</h4>
+            <div class="contact-details">
+              <a href="https://wa.me/917550139169" class="contact-link whatsapp-link" target="_blank">
+                💬 WhatsApp: +91 75501 39169
+              </a>
+              <a href="https://discord.gg/xQKTxS98cc" class="contact-link discord-link" target="_blank">
+                🎮 Discord: EVERGLOW#CHAN
+              </a>
+              <div class="contact-item">
+                <span>Supported:</span>
+                <strong>BTC, ETH, USDT, BNB</strong>
+              </div>
+            </div>
+          </div>
+          <p>We accept Bitcoin, Ethereum, USDT and other major cryptocurrencies.</p>
+        </div>
+        
+        <!-- QR Payment Details -->
+        <div class="payment-details" id="qrDetails">
+          <h3>Scan QR Code to Pay</h3>
+          <div class="qr-code">
+            <img src="payment/qr.png" alt="QR Code for Payment">
+          </div>
+          <p>After payment, enter your transaction ID below:</p>
+          <div class="form-group">
+            <input type="text" id="qrTransactionId" placeholder="Transaction ID (e.g. TXN123456789)">
+          </div>
+        </div>
+        
+        <button class="proceed-btn" id="proceedPayment" disabled>Proceed with Payment</button>
+      </div>
+      
+      <!-- Processing Message -->
+      <div class="processing-message" id="processingMessage">
+        <div class="processing-icon">⏳</div>
+        <h2>Payment Processing</h2>
+        <p>Your payment for <strong id="processingPackage"></strong> is being verified.</p>
+        <p>Please contact us for instant activation:</p>
+        
+        <div class="contact-info">
+          <div class="contact-details">
+            <a href="https://wa.me/917550139169" class="contact-link whatsapp-link" target="_blank">
+              💬 WhatsApp: +91 75501 39169
+            </a>
+            <a href="https://discord.gg/xQKTxS98cc" class="contact-link discord-link" target="_blank">
+              🎮 Discord: EVERGLOW#CHAN
+            </a>
+          </div>
+        </div>
+        
+        <p>We'll deliver your product within 5-10 minutes after verification.</p>
+        <button class="proceed-btn" id="closeProcessing">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Payment Modal Logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('paymentModal');
+      const closeModal = document.getElementById('closeModal');
+      const closeProcessing = document.getElementById('closeProcessing');
+      const purchaseButtons = document.querySelectorAll('.purchase-btn');
+      const paymentOptions = document.querySelectorAll('.payment-option');
+      const proceedBtn = document.getElementById('proceedPayment');
+      const packageInfo = document.getElementById('selectedPackageInfo');
+      const paymentForm = document.getElementById('paymentForm');
+      const processingMessage = document.getElementById('processingMessage');
+      const processingPackage = document.getElementById('processingPackage');
+      
+      let selectedPackage = '';
+      let selectedPrice = '';
+      let selectedMethod = '';
+      
+      // Open modal when purchase button is clicked
+      purchaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          selectedPackage = this.getAttribute('data-package');
+          selectedPrice = this.getAttribute('data-price');
+          
+          packageInfo.innerHTML = `
+            <h3>${selectedPackage}</h3>
+            <p>Amount: <strong>₹${selectedPrice}</strong></p>
+          `;
+          
+          modal.style.display = 'block';
+          resetPaymentForm();
+        });
+      });
+      
+      // Close modal
+      closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      closeProcessing.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      // Select payment method
+      paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Remove selected class from all options
+          paymentOptions.forEach(opt => opt.classList.remove('selected'));
+          // Add selected class to clicked option
+          this.classList.add('selected');
+          
+          selectedMethod = this.getAttribute('data-method');
+          
+          // Hide all payment details
+          document.querySelectorAll('.payment-details').forEach(detail => {
+            detail.classList.remove('active');
+          });
+          
+          // Show selected payment details
+          document.getElementById(`${selectedMethod}Details`).classList.add('active');
+          
+          // Enable proceed button
+          proceedBtn.disabled = false;
+        });
+      });
+      
+      // Process payment
+      proceedBtn.addEventListener('click', function() {
+        // Show processing message instead of success
+        paymentForm.style.display = 'none';
+        processingPackage.textContent = selectedPackage;
+        processingMessage.style.display = 'block';
+      });
+      
+      // Reset payment form when modal is opened
+      function resetPaymentForm() {
+        paymentOptions.forEach(opt => opt.classList.remove('selected'));
+        document.querySelectorAll('.payment-details').forEach(detail => {
+          detail.classList.remove('active');
+        });
+        proceedBtn.disabled = true;
+        paymentForm.style.display = 'block';
+        processingMessage.style.display = 'none';
+        
+        // Clear form inputs
+        document.getElementById('transactionId').value = '';
+        document.getElementById('qrTransactionId').value = '';
+      }
+
+      // Copy UPI ID function
+      window.copyUPI = function() {
+        const upiId = 'EVERGLOW.gaming@okhdfcbank';
+        navigator.clipboard.writeText(upiId).then(function() {
+          alert('UPI ID copied to clipboard: ' + upiId);
+        }, function(err) {
+          console.error('Could not copy text: ', err);
+        });
+      };
+    });
+  </script>
+</body>
+</html>

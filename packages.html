@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EVERGLOW - Premium Gaming Packages</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #75a9ee;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #75a9ee;
+    }
+
+    .auth-buttons a {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .sign-up {
+      background-color: #75a9ee;
+      color: #000;
+    }
+
+    .sign-up:hover {
+      background-color: #75a9ee;
+      box-shadow: 0 0 10px #75a9ee;
+    }
+
+    .sign-in {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #75a9ee;
+    }
+
+    .sign-in:hover {
+      background-color: #111;
+      box-shadow: 0 0 10px #75a9ee;
+    }
+
+    .section-title {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+    }
+
+    .section-title h1 {
+      font-size: 2.5rem;
+    }
+
+    .section-title span {
+      color: #75a9ee;
+    }
+
+    .section-title p {
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+
+    .pricing {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #111;
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 280px;
+      transition: 0.3s;
+      box-shadow: 0 0 0 transparent;
+      position: relative;
+      border: 1px solid #333;
+    }
+
+    .card:hover {
+      box-shadow: 0 0 15px #75a9ee, 0 0 30px #75a9ee;
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      color: #75a9ee;
+      margin-bottom: 10px;
+    }
+
+    .card .price {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li::before {
+      content: "✔";
+      color: #75a9ee;
+      margin-right: 8px;
+    }
+
+    .card ul li {
+      margin: 8px 0;
+    }
+
+    .highlighted {
+      border: 2px solid #75a9ee;
+    }
+
+    .button-center {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .button-center a {
+      background-color: #75a9ee;
+      color: #000;
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .button-center a:hover {
+      background-color: #75a9ee;
+      box-shadow: 0 0 15px #75a9ee;
+    }
+
+    /* Badge Styles */
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #000;
+      z-index: 10;
+      animation: pulse 2s infinite;
+    }
+
+    .limited-offer {
+      background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+      box-shadow: 0 0 10px #ff6b6b;
+    }
+
+    .most-popular {
+      background: linear-gradient(45deg, #75a9ee, #00ddff);
+      box-shadow: 0 0 10px #75a9ee;
+    }
+
+    .new {
+      background: linear-gradient(45deg, #4ecdc4, #44a08d);
+      box-shadow: 0 0 10px #4ecdc4;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .price del {
+      color: #666;
+      font-size: 0.9em;
+      margin-left: 5px;
+    }
+
+    .original-price {
+      color: #666;
+      font-size: 0.9em;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo">EVERGLOW</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Packages</a>
+      <a href="#">About</a>
+    </div>
+    <div class="auth-buttons">
+      <a href="#" class="sign-up">Sign Up</a>
+      <a href="#" class="sign-in">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Section Title -->
+  <div class="section-title">
+    <h1>Premium <span>Gaming Packages</span></h1>
+    <p>Choose from our range of professional gaming enhancement tools.</p>
+  </div>
+
+  <!-- Pricing Cards -->
+  <div class="pricing">
+    <div class="card">
+      <div class="badge limited-offer">🔥 Limited Offer</div>
+      <h2>Internal Preview</h2>
+      <div class="price">₹1,499 <del class="original-price">₹3,000</del></div>
+      <ul>
+        <li>Advanced ESP</li>
+        <li>Aimbot</li>
+        <li>Anti-ban protection</li>
+        <li>1-year updates</li>
+      </ul>
+    </div>
+
+    <div class="card highlighted">
+      <div class="badge most-popular">⭐ Most Popular</div>
+      <h2>Streamer Internal</h2>
+      <div class="price">₹2499 <del class="original-price">₹3,500</del></div>
+      <ul>
+        <li>Mobile control panel</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge new">🆕 New Release</div>
+      <h2>Aim Kill</h2>
+      <div class="price">₹1999<del class="original-price">₹3,000</del></div>
+      <ul>
+        <li>Perfect accuracy</li>
+        <li>Headshot guarantee</li>
+        <li>Customizable settings</li>
+        <li>Regular updates</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="button-center">
+    <a href="viewallpakcages.html">View All Packages →</a>
+  </div>
+
+</body>
+</html>
